@@ -1,4 +1,5 @@
 Django==2.0.4
 django-tokenapi==1.0
+Pillow==5.1.0
 psycopg2-binary==2.7.4
 pytz==2018.4
