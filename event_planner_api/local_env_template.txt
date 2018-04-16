@@ -1,0 +1,13 @@
+export SECRET_KEY='secret_key_here'
+export SERVER_RUN_LEVEL=True
+
+# database configuration
+export DB_ENGINE='django.db.backends.postgresql_psycopg2'
+export DB_NAME='eventplanner'
+export DB_USERNAME='event-user'
+export DB_PASSWORD='password'
+export DB_HOST='localhost'
+export DB_PORT=''
+
+# authentication
+export TOKEN_TIMEOUT_DAYS=7
