@@ -18,7 +18,7 @@ class UserProfile(AuditModel):
     Store additional information on users
     """
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    phone_num = models.CharField(max_length=20, null=True, default=None)
+    phone_number = models.CharField(max_length=20, null=True, default=None)
 
 
 class Event(AuditModel):
@@ -26,7 +26,6 @@ class Event(AuditModel):
     General event model
     """
     name = models.CharField(max_length=255)
-    users = models.ManyToManyField(User, related_name='user_events')
     start_datetime = models.DateTimeField()
     end_datetime = models.DateTimeField()
     is_active = models.BooleanField(default=True)

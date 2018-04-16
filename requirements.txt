@@ -1,5 +1,7 @@
 Django==2.0.4
+django-extensions==2.0.7
 django-tokenapi==1.0
 Pillow==5.1.0
 psycopg2-binary==2.7.4
 pytz==2018.4
+six==1.11.0
