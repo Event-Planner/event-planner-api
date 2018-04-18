@@ -19,6 +19,33 @@ DB_PASSWORD = getenv('DB_PASSWORD')
 DB_HOST = getenv('DB_HOST', 'localhost')
 DB_PORT = getenv('DB_PORT', '')
 
+# Passwords
+AUTH_PASSWORD_VALIDATORS = [
+    {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
+    {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'},
+    {'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator'},
+    {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator'},
+]
+
+PASSWORD_HASHERS = [
+    'django.contrib.auth.hashers.PBKDF2PasswordHasher',
+    'django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher',
+    'django.contrib.auth.hashers.Argon2PasswordHasher',
+    'django.contrib.auth.hashers.BCryptSHA256PasswordHasher',
+    'django.contrib.auth.hashers.BCryptPasswordHasher',
+]
+
+# Middlewares
+MIDDLEWARE = [
+    'django.middleware.security.SecurityMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+]
+
 if IS_UNIT_TEST:
     DATABASES = {
         'default': {
@@ -29,8 +56,10 @@ if IS_UNIT_TEST:
             }
         }
     }
-    DB_ENGINE = 'django.db.backends.sqlite3'
-    DB_NAME = 'tests/event_planner_api.testdb.sqlite'
+    AUTH_PASSWORD_VALIDATORS = []
+    PASSWORD_HASHERS = ['django.contrib.auth.hashers.MD5PasswordHasher']
+    MIDDLEWARE = []
+    SERVER_RUN_LEVEL = False
 else:
     DATABASES = {
         'default': {
