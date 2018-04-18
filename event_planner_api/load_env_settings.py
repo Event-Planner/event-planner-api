@@ -1,4 +1,9 @@
 from os import getenv
+import sys
+
+IS_UNIT_TEST = False
+if 'test' in sys.argv or 'test_coverage' in sys.argv:
+    IS_UNIT_TEST = True
 
 # Django specific env vars
 SECRET_KEY = getenv('SECRET_KEY')
@@ -13,6 +18,30 @@ DB_USERNAME = getenv('DB_USERNAME')
 DB_PASSWORD = getenv('DB_PASSWORD')
 DB_HOST = getenv('DB_HOST', 'localhost')
 DB_PORT = getenv('DB_PORT', '')
+
+if IS_UNIT_TEST:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': 'tests/event_planner_api.testdb.sqlite',
+            'TEST': {
+                'NAME': 'tests/event_planner_api.testdb.sqlite',
+            }
+        }
+    }
+    DB_ENGINE = 'django.db.backends.sqlite3'
+    DB_NAME = 'tests/event_planner_api.testdb.sqlite'
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': DB_ENGINE,
+            'NAME': DB_NAME,
+            'USER': DB_USERNAME,
+            'PASSWORD': DB_PASSWORD,
+            'HOST': DB_HOST,
+            'PORT': DB_PORT,
+        }
+    }
 
 # Authenitcation env vars
 TOKEN_TIMEOUT_DAYS = getenv('TOKEN_TIMEOUT_DAYS', 7)

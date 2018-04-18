@@ -82,16 +82,7 @@ WSGI_APPLICATION = 'event_planner_api.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': load_env_settings.DB_ENGINE,
-        'NAME': load_env_settings.DB_NAME,
-        'USER': load_env_settings.DB_USERNAME,
-        'PASSWORD': load_env_settings.DB_PASSWORD,
-        'HOST': load_env_settings.DB_HOST,
-        'PORT': load_env_settings.DB_PORT,
-    }
-}
+DATABASES = load_env_settings.DATABASES
 
 
 # Password validation
