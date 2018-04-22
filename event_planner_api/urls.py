@@ -15,9 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.conf.urls import url, include
-from django.urls import path
+from django.urls import path, re_path
 
 urlpatterns = [
-    url(r'^token/', include('tokenapi.urls')),
+    re_path('^token/', include('tokenapi.urls')),
     path('admin/', admin.site.urls),
 ]

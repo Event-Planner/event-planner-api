@@ -45,7 +45,7 @@ INSTALLED_APPS = [
 
 # Authentication
 # https://docs.djangoproject.com/en/2.0/topics/auth/customizing/
-AUTHENTICATION_BACKENDS = ('tokenapi.backends.TokenBackend')
+AUTHENTICATION_BACKENDS = ('django.contrib.auth.backends.ModelBackend', 'tokenapi.backends.TokenBackend')
 TOKEN_TIMEOUT_DAYS = load_env_settings.TOKEN_TIMEOUT_DAYS
 
 MIDDLEWARE = load_env_settings.MIDDLEWARE
