@@ -17,9 +17,9 @@ from django.contrib import admin
 from django.conf.urls import url, include
 from django.urls import path, re_path
 
-from event_planner_api.authentication import authenticate_login
+from event_planner_api.api_handlers import get_token
 
 urlpatterns = [
-    path('get_token/', authenticate_login),
+    path('get_token/', get_token),
     path('admin/', admin.site.urls),
 ]

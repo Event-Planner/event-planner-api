@@ -50,9 +50,9 @@ if IS_UNIT_TEST:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': 'tests/event_planner_api.testdb.sqlite',
+            'NAME': 'testing/event_planner_api.testdb.sqlite',
             'TEST': {
-                'NAME': 'tests/event_planner_api.testdb.sqlite',
+                'NAME': 'testing/event_planner_api.testdb.sqlite',
             }
         }
     }
