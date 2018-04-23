@@ -3,7 +3,7 @@ import json
 from testing.base_test_class import TestBase
 
 
-class TestEventPlannerApiViews(TestBase):
+class TestApiHandlers(TestBase):
 
     @classmethod
     def setUpTestData(cls):
@@ -22,8 +22,7 @@ class TestEventPlannerApiViews(TestBase):
             'username': username,
             'password': password,
         }
-        post_json = json.dumps(post_data)
-        response = self.client.post(url, post_json, content_type='application/json')
+        response = self.send_json_post_request(url, post_data)
         response_body = self.decode_response(response)
 
         self.assertEqual(response.status_code, 200)
@@ -40,8 +39,7 @@ class TestEventPlannerApiViews(TestBase):
             'username': username,
             'password': password,
         }
-        post_json = json.dumps(post_data)
-        response = self.client.post(url, post_json, content_type='application/json')
+        response = self.send_json_post_request(url, post_data)
         response_body = self.decode_response(response)
 
         self.assertEqual(response.status_code, 200)
@@ -57,8 +55,7 @@ class TestEventPlannerApiViews(TestBase):
             'username': username,
             'password': 'wrong_password',
         }
-        post_json = json.dumps(post_data)
-        response = self.client.post(url, post_json, content_type='application/json')
+        response = self.send_json_post_request(url, post_data)
         response_body = self.decode_response(response)
 
         self.assertEqual(response.status_code, 200)
@@ -74,8 +71,7 @@ class TestEventPlannerApiViews(TestBase):
             'user': username,
             'pass': password,
         }
-        post_json = json.dumps(post_data)
-        response = self.client.post(url, post_json, content_type='application/json')
+        response = self.send_json_post_request(url, post_data)
         response_body = self.decode_response(response)
 
         self.assertEqual(response.status_code, 200)

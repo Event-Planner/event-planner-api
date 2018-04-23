@@ -33,3 +33,7 @@ class TestBase(TestCase):
     @staticmethod
     def decode_response(response):
         return json.loads(response.content.decode('utf-8'))
+
+    def send_json_post_request(self, url, post_data):
+        post_json = json.dumps(post_data)
+        return self.client.post(url, post_json, content_type='application/json')

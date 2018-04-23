@@ -17,12 +17,7 @@ def authenticate_login(post_parameters):
                 'status': 0,
                 'token': token_generator.make_token(user),
             }
-        elif user and not user.is_active:
-            return {
-                'status': 1,
-                'error': 'User is not active',
-            }
-        elif not user:
+        else:
             return {
                 'status': 1,
                 'error': 'Unable to authenticate with credentials provided',
