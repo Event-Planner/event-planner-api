@@ -1,13 +1,17 @@
 from tokenapi.tokens import token_generator
+from tokenapi.views import token_new
 
 from django.contrib.auth import authenticate
+from django.http import HttpResponse, HttpResponseBadRequest
+from django.views.decorators.csrf import csrf_exempt
 
 
-def authenticate_login():
+@csrf_exempt
+def authenticate_login(request):
     """
     Given a valid username and password, return an api token
     """
-    raise NotImplementedError
+    return token_new(request)
 
 
 def authenticate_request():
