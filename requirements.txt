@@ -1,6 +1,8 @@
 Django==2.0.4
 django-extensions==2.0.7
+django-nose==1.4.5
 django-tokenapi==1.0
+nose==1.3.7
 Pillow==5.1.0
 psycopg2-binary==2.7.4
 pytz==2018.4

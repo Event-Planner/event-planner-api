@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_extensions',
+    'django_nose',
     'tokenapi',
     'cloud',
 ]
@@ -71,6 +72,8 @@ TEMPLATES = [
     },
 ]
 
+TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
+
 WSGI_APPLICATION = 'event_planner_api.wsgi.application'
 
 
@@ -85,20 +88,6 @@ DATABASES = load_env_settings.DATABASES
 
 AUTH_PASSWORD_VALIDATORS = load_env_settings.AUTH_PASSWORD_VALIDATORS
 
-# AUTH_PASSWORD_VALIDATORS = [
-#     {
-#         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-#     },
-#     {
-#         'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-#     },
-#     {
-#         'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-#     },
-#     {
-#         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-#     },
-# ]
 
 
 # Internationalization

@@ -1,17 +1,7 @@
-import json
-
 from testing.base_test_class import TestBase
 
 
-class TestApiHandlers(TestBase):
-
-    @classmethod
-    def setUpTestData(cls):
-        cls.admin_username = 'admin'
-        cls.admin_password = 'password'
-        cls.admin_user = cls.create_user(cls.admin_username, cls.admin_password, is_staff=True,
-                is_superuser=True)
-        cls.admin_token = cls.generate_token(cls.admin_username, cls.admin_password)
+class TestGetToken(TestBase):
 
     def test_get_token_good(self):
         url = '/get_token/'

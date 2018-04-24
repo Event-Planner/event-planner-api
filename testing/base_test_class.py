@@ -12,6 +12,11 @@ class TestBase(TestCase):
     @classmethod
     def setUpTestData(cls):
         cls.client = Client()
+        cls.admin_username = 'admin'
+        cls.admin_password = 'password'
+        cls.admin_user = cls.create_user(cls.admin_username, cls.admin_password, is_staff=True,
+                is_superuser=True)
+        cls.admin_token = cls.generate_token(cls.admin_username, cls.admin_password)
 
     @staticmethod
     def create_user(username, password, is_active=True, is_staff=False, is_superuser=False):
