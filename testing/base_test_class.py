@@ -3,7 +3,7 @@ from tokenapi.tokens import token_generator
 
 from django.contrib.auth import authenticate
 from django.contrib.auth.models import User
-from django.test import TestCase
+from django.test import RequestFactory, TestCase
 from django.test.client import Client
 
 
@@ -12,6 +12,7 @@ class TestBase(TestCase):
     @classmethod
     def setUpTestData(cls):
         cls.client = Client()
+        cls.factory = RequestFactory()
         cls.admin_username = 'admin'
         cls.admin_password = 'password'
         cls.admin_user = cls.create_user(cls.admin_username, cls.admin_password, is_staff=True,
