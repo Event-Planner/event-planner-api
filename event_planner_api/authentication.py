@@ -2,6 +2,7 @@ from tokenapi.tokens import token_generator
 from tokenapi.views import token_new
 
 from django.contrib.auth import authenticate
+from django.contrib.auth.models import User
 
 
 def authenticate_login(post_parameters):
@@ -32,4 +33,17 @@ def authenticate_request(post_parameters):
     """
     Validate username, token pair
     """
-    raise NotImplementedError
+    username = post_parameters.get('username')
+    token = post_parameters.get('token')
+
+    if not username or not token:
+        return False
+
+    user = User.objects.filter(username=username).first()
+    if user:
+        if not user.is_active:
+            return False
+    else:
+        return False
+
+    return authenticate(pk=user, token=token)
