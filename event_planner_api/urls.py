@@ -14,12 +14,12 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.conf.urls import url, include
-from django.urls import path, re_path
+from django.urls import path, include
 
 from event_planner_api.api_handlers import get_token
 
 urlpatterns = [
     path('get_token/', get_token),
     path('admin/', admin.site.urls),
+    path('events/', include('events.urls')),
 ]
