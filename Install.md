@@ -22,4 +22,9 @@
 ## Setup local.env
 1. `$ cp event_planner_api/local_env_template.txt event_planner_api/local.env`
 2. Fill in local.env settings
+```bash
+export DB_NAME='eventplanner'
+export DB_USERNAME='event'
+export DB_PASSWORD='password'
+```
 3. `$ . event_planner_api/local.env` or `$ source event_planner_api/local.env`
