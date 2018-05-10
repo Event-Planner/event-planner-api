@@ -1,8 +1,8 @@
 # event-planner-api
 
-#Installation
+# Installation
 
-## Prerequeisites:
+## Prerequisites:
 - python3
 - pip
 - virtualenv
