@@ -5,19 +5,19 @@ Prerequeisites:
 - postgresql
 
 Make a python3 virtualenv, start it, and install python packages
-`$ virtualenv -p python3 venv`
-`$ . venv/bin/activate`
-`$ pip install -r requirements.txt`
+1. `$ virtualenv -p python3 venv`
+2. `$ . venv/bin/activate`
+3. `$ pip install -r requirements.txt`
 
 Setup postgressql
-$ sudo -u postgres psql
-`postgres=# CREATE DATABASE eventplanner;`
-`postgres=# CREATE USER event WITH PASSWORD 'password';`
-`postgres=# ALTER ROLE event SET client_encoding TO 'utf8';`
-`postgres=# ALTER ROLE event SET default_transaction_isolation TO 'read committed';`
-`postgres=# ALTER ROLE event SET timezone TO 'UTC';`
-`postgres=# GRANT ALL PRIVILEGES ON DATABASE eventplanner TO event;`
-`postgres=# \q`
+1. `$ sudo -u postgres psql`
+2. `postgres=# CREATE DATABASE eventplanner;`
+3. `postgres=# CREATE USER event WITH PASSWORD 'password';`
+4. `postgres=# ALTER ROLE event SET client_encoding TO 'utf8';`
+5. `postgres=# ALTER ROLE event SET default_transaction_isolation TO 'read committed';`
+6. `postgres=# ALTER ROLE event SET timezone TO 'UTC';`
+7. `postgres=# GRANT ALL PRIVILEGES ON DATABASE eventplanner TO event;`
+8. `postgres=# \q`
 
 Setup local.env
 `$ cp event_planner_api/local_env_template.txt event_planner_api/local.env`
