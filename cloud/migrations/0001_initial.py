@@ -9,97 +9,170 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-        migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-    ]
+    dependencies = [migrations.swappable_dependency(settings.AUTH_USER_MODEL)]
 
     operations = [
         migrations.CreateModel(
-            name='Event',
+            name="Event",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('created_on', models.DateTimeField(auto_now_add=True)),
-                ('modified_on', models.DateTimeField(auto_now=True)),
-                ('name', models.CharField(max_length=255)),
-                ('start_datetime', models.DateTimeField()),
-                ('end_datetime', models.DateTimeField()),
-                ('is_active', models.BooleanField(default=True)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("created_on", models.DateTimeField(auto_now_add=True)),
+                ("modified_on", models.DateTimeField(auto_now=True)),
+                ("name", models.CharField(max_length=255)),
+                ("start_datetime", models.DateTimeField()),
+                ("end_datetime", models.DateTimeField()),
+                ("is_active", models.BooleanField(default=True)),
             ],
-            options={
-                'abstract': False,
-            },
+            options={"abstract": False},
         ),
         migrations.CreateModel(
-            name='EventDescription',
+            name="EventDescription",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('created_on', models.DateTimeField(auto_now_add=True)),
-                ('modified_on', models.DateTimeField(auto_now=True)),
-                ('value', models.CharField(max_length=255)),
-                ('url', models.CharField(blank=True, max_length=255)),
-                ('image', models.ImageField(blank=True, upload_to='')),
-                ('event', models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, to='cloud.Event')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("created_on", models.DateTimeField(auto_now_add=True)),
+                ("modified_on", models.DateTimeField(auto_now=True)),
+                ("value", models.CharField(max_length=255)),
+                ("url", models.CharField(blank=True, max_length=255)),
+                ("image", models.ImageField(blank=True, upload_to="")),
+                (
+                    "event",
+                    models.ForeignKey(
+                        null=True,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="cloud.Event",
+                    ),
+                ),
             ],
-            options={
-                'abstract': False,
-            },
+            options={"abstract": False},
         ),
         migrations.CreateModel(
-            name='EventLocation',
+            name="EventLocation",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('created_on', models.DateTimeField(auto_now_add=True)),
-                ('modified_on', models.DateTimeField(auto_now=True)),
-                ('street', models.CharField(blank=True, max_length=100, null=True)),
-                ('unit', models.CharField(blank=True, max_length=16, null=True)),
-                ('city', models.CharField(blank=True, max_length=100, null=True)),
-                ('state', models.CharField(blank=True, max_length=2, null=True)),
-                ('country', models.CharField(blank=True, max_length=2, null=True)),
-                ('zipcode', models.CharField(blank=True, max_length=16, null=True)),
-                ('event', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='event_location', to='cloud.Event')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("created_on", models.DateTimeField(auto_now_add=True)),
+                ("modified_on", models.DateTimeField(auto_now=True)),
+                ("street", models.CharField(blank=True, max_length=100, null=True)),
+                ("unit", models.CharField(blank=True, max_length=16, null=True)),
+                ("city", models.CharField(blank=True, max_length=100, null=True)),
+                ("state", models.CharField(blank=True, max_length=2, null=True)),
+                ("country", models.CharField(blank=True, max_length=2, null=True)),
+                ("zipcode", models.CharField(blank=True, max_length=16, null=True)),
+                (
+                    "event",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="event_location",
+                        to="cloud.Event",
+                    ),
+                ),
             ],
-            options={
-                'abstract': False,
-            },
+            options={"abstract": False},
         ),
         migrations.CreateModel(
-            name='RoleType',
+            name="RoleType",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('created_on', models.DateTimeField(auto_now_add=True)),
-                ('modified_on', models.DateTimeField(auto_now=True)),
-                ('name', models.CharField(max_length=255, unique=True)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("created_on", models.DateTimeField(auto_now_add=True)),
+                ("modified_on", models.DateTimeField(auto_now=True)),
+                ("name", models.CharField(max_length=255, unique=True)),
             ],
-            options={
-                'abstract': False,
-            },
+            options={"abstract": False},
         ),
         migrations.CreateModel(
-            name='UserEventRole',
+            name="UserEventRole",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('created_on', models.DateTimeField(auto_now_add=True)),
-                ('modified_on', models.DateTimeField(auto_now=True)),
-                ('is_active', models.BooleanField(default=True)),
-                ('event', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='cloud.Event')),
-                ('role', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='cloud.RoleType')),
-                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("created_on", models.DateTimeField(auto_now_add=True)),
+                ("modified_on", models.DateTimeField(auto_now=True)),
+                ("is_active", models.BooleanField(default=True)),
+                (
+                    "event",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE, to="cloud.Event"
+                    ),
+                ),
+                (
+                    "role",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE, to="cloud.RoleType"
+                    ),
+                ),
+                (
+                    "user",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
-            options={
-                'abstract': False,
-            },
+            options={"abstract": False},
         ),
         migrations.CreateModel(
-            name='UserProfile',
+            name="UserProfile",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('created_on', models.DateTimeField(auto_now_add=True)),
-                ('modified_on', models.DateTimeField(auto_now=True)),
-                ('phone_number', models.CharField(default=None, max_length=20, null=True)),
-                ('user', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("created_on", models.DateTimeField(auto_now_add=True)),
+                ("modified_on", models.DateTimeField(auto_now=True)),
+                (
+                    "phone_number",
+                    models.CharField(default=None, max_length=20, null=True),
+                ),
+                (
+                    "user",
+                    models.OneToOneField(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
-            options={
-                'abstract': False,
-            },
+            options={"abstract": False},
         ),
     ]

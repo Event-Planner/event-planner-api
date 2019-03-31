@@ -32,49 +32,49 @@ ALLOWED_HOSTS = load_env_settings.ALLOWED_HOSTS
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'django_extensions',
-    'django_nose',
-    'tokenapi',
-    'cloud',
+    "django.contrib.admin",
+    "django.contrib.auth",
+    "django.contrib.contenttypes",
+    "django.contrib.sessions",
+    "django.contrib.messages",
+    "django.contrib.staticfiles",
+    "django_extensions",
+    "django_nose",
+    "tokenapi",
+    "cloud",
 ]
 
 # Authentication
 # https://docs.djangoproject.com/en/2.0/topics/auth/customizing/
 AUTHENTICATION_BACKENDS = (
-    'django.contrib.auth.backends.ModelBackend',
-    'tokenapi.backends.TokenBackend',
+    "django.contrib.auth.backends.ModelBackend",
+    "tokenapi.backends.TokenBackend",
 )
 TOKEN_TIMEOUT_DAYS = load_env_settings.TOKEN_TIMEOUT_DAYS
 
 MIDDLEWARE = load_env_settings.MIDDLEWARE
 
-ROOT_URLCONF = 'event_planner_api.urls'
+ROOT_URLCONF = "event_planner_api.urls"
 
 TEMPLATES = [
     {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
-        'APP_DIRS': True,
-        'OPTIONS': {
-            'context_processors': [
-                'django.template.context_processors.debug',
-                'django.template.context_processors.request',
-                'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
-            ],
+        "BACKEND": "django.template.backends.django.DjangoTemplates",
+        "DIRS": [],
+        "APP_DIRS": True,
+        "OPTIONS": {
+            "context_processors": [
+                "django.template.context_processors.debug",
+                "django.template.context_processors.request",
+                "django.contrib.auth.context_processors.auth",
+                "django.contrib.messages.context_processors.messages",
+            ]
         },
-    },
+    }
 ]
 
-TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
+TEST_RUNNER = "django_nose.NoseTestSuiteRunner"
 
-WSGI_APPLICATION = 'event_planner_api.wsgi.application'
+WSGI_APPLICATION = "event_planner_api.wsgi.application"
 
 
 # Database
@@ -89,13 +89,12 @@ DATABASES = load_env_settings.DATABASES
 AUTH_PASSWORD_VALIDATORS = load_env_settings.AUTH_PASSWORD_VALIDATORS
 
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = "en-us"
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = "UTC"
 
 USE_I18N = True
 
