@@ -19,7 +19,4 @@ from django.urls import path, re_path
 
 from event_planner_api.api_handlers import get_token
 
-urlpatterns = [
-    path('get_token/', get_token),
-    path('admin/', admin.site.urls),
-]
+urlpatterns = [path("get_token/", get_token), path("admin/", admin.site.urls)]
