@@ -3,15 +3,14 @@
 # Installation
 
 ## Prerequisites:
-- python3
+- python3 (macOS)
+- python3.7 (Linux)
 - pip
 - virtualenv
 - postgresql
 
 ## Make a python3 virtualenv, start it, and install python packages
-1. `$ virtualenv -p python3 venv`
-2. `$ . venv/bin/activate`
-3. `$ pip install -r requirements.txt`
+1. `$ make setup`
 
 ## Setup postgressql
 1. `$ sudo -u postgres psql`
@@ -24,11 +23,11 @@
 8. `postgres=# \q`
 
 ## Setup local.env
-1. `$ cp event_planner_api/local_env_template.txt event_planner_api/local.env`
+1. `$ cp local_env_template.txt local.env`
 2. Fill in local.env settings
 ```bash
 export DB_NAME='eventplanner'
 export DB_USERNAME='event'
 export DB_PASSWORD='password'
 ```
-3. `$ . event_planner_api/local.env` or `$ source event_planner_api/local.env`
+3. `$ . local.env` or `$ source local.env`

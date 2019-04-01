@@ -21,9 +21,7 @@ DB_PORT = getenv("DB_PORT", "")
 
 # Passwords
 AUTH_PASSWORD_VALIDATORS = [
-    {
-        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator"
-    },
+    {"NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator"},
     {"NAME": "django.contrib.auth.password_validation.MinimumLengthValidator"},
     {"NAME": "django.contrib.auth.password_validation.CommonPasswordValidator"},
     {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator"},
@@ -72,5 +70,5 @@ else:
         }
     }
 
-# Authenitcation env vars
+# Authentication env vars
 TOKEN_TIMEOUT_DAYS = getenv("TOKEN_TIMEOUT_DAYS", 7)
