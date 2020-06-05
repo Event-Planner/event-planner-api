@@ -1,4 +1,4 @@
-Django==2.1.9
+Django==2.2.13
 django-extensions==2.0.7
 django-nose==1.4.5
 django-tokenapi==1.0
